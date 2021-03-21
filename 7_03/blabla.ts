@@ -58,4 +58,28 @@ class Pab {
 
 }
 
+
+
+class InputCreator {
+    inputCreate : HTMLInputElement;
+
+    constructor() {
+        this.rushhh():
+    }
+
+    rushhh() {
+     this.inputCreate = document.querySelector('#createInput');
+     this.inputCreate.addEventListener('input', () => this.bziuu());
+    }
+    bziuu() {
+     let x :number = +this.inputCreate.value;
+     for (let a = 0; a<x, a++){
+        const buttons = document.createElement('input');
+        buttons.type = "text";
+        document.appendChild(buttons);
+     }
+     }
+    }
+}
+const hejkaa2 = new InputCreator();
 const hejka = new Pab();
