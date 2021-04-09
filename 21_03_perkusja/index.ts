@@ -9,19 +9,40 @@ let tinkSound: HTMLAudioElement;
 let tomSound: HTMLAudioElement;
 
 const channel1: any[] = [];
-
+let ifRecord1: boolean = false;
+let timeRecord1: number;
+let counter1: number = 0;
 startApp();
+
 
 function startApp() :void {
     document.body.addEventListener('keypress', keyPressOn);
+ 
+    loadButtons();
+    loadAudio();
+}
+
+function loadButtons(): void{
     const btnChannel1 = document.querySelector('#channel1');
     btnChannel1.addEventListener('click', playChanel1);
-    loadAudio();
-
+    const btnRecord1 = document.querySelector('#record1');
+    btnRecord1.addEventListener('click', recording1);
 }
+function recording1(ev: MouseEvent ) {
+    counter1++;
+    timeRecord1 = ev.timeStamp;
+    if (counter1 % 2 == 0) {
+        ifRecord1 = false;
+    }
+    else {
+        ifRecord1 = true;
+    }
+}
+
+
 function playChanel1():void {
     channel1.forEach(sound => {
-        setTimeout( () => playSound(sound.key), sound.time);
+        setTimeout( () => playSound(sound.key), sound.newTime);
     })
 }
 
@@ -42,9 +63,18 @@ function loadAudio():void {
 function keyPressOn(ev: KeyboardEvent): void {
     const key = ev.key;
     const time = ev.timeStamp;
-    channel1.push({key,time});
+
+    if (key=='q' || key=='w' ||key=='e' ||key=='r' ||key=='a' ||key=='s' ||
+    key=='d' ||key=='f' ||key=='x' ) {
     playSound(key);
-    console.log(ev);
+    }
+    if( ifRecord1 ) {
+    const newTime = time - timeRecord1;
+    channel1.push({key,newTime});
+    console.log(channel1);
+    }
+
+    
 }
 
 function playSound(key):void {

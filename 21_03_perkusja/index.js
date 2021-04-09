@@ -8,16 +8,34 @@ var snareSound;
 var tinkSound;
 var tomSound;
 var channel1 = [];
+var ifRecord1 = false;
+var timeRecord1;
+var counter1 = 0;
 startApp();
 function startApp() {
     document.body.addEventListener('keypress', keyPressOn);
+    loadButtons();
+    loadAudio();
+}
+function loadButtons() {
     var btnChannel1 = document.querySelector('#channel1');
     btnChannel1.addEventListener('click', playChanel1);
-    loadAudio();
+    var btnRecord1 = document.querySelector('#record1');
+    btnRecord1.addEventListener('click', recording1);
+}
+function recording1(ev) {
+    counter1++;
+    timeRecord1 = ev.timeStamp;
+    if (counter1 % 2 == 0) {
+        ifRecord1 = false;
+    }
+    else {
+        ifRecord1 = true;
+    }
 }
 function playChanel1() {
     channel1.forEach(function (sound) {
-        setTimeout(function () { return playSound(sound.key); }, sound.time);
+        setTimeout(function () { return playSound(sound.key); }, sound.newTime);
     });
 }
 function loadAudio() {
@@ -34,9 +52,15 @@ function loadAudio() {
 function keyPressOn(ev) {
     var key = ev.key;
     var time = ev.timeStamp;
-    channel1.push({ key: key, time: time });
-    playSound(key);
-    console.log(ev);
+    if (key == 'q' || key == 'w' || key == 'e' || key == 'r' || key == 'a' || key == 's' ||
+        key == 'd' || key == 'f' || key == 'x') {
+        playSound(key);
+    }
+    if (ifRecord1) {
+        var newTime = time - timeRecord1;
+        channel1.push({ key: key, newTime: newTime });
+        console.log(channel1);
+    }
 }
 function playSound(key) {
     switch (key) {
