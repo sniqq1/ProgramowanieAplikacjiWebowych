@@ -7,7 +7,6 @@ let rideSound: HTMLAudioElement;
 let snareSound: HTMLAudioElement;
 let tinkSound: HTMLAudioElement;
 let tomSound: HTMLAudioElement;
-
 const channel1: any[] = [];
 let ifRecord1: boolean = false;
 let timeRecord1: number;
@@ -54,6 +53,113 @@ function loadButtons(): void{
     btnChannel4.addEventListener('click', playChanel4);
     const btnRecord4 = document.querySelector('#record4');
     btnRecord4.addEventListener('click', recording4);
+
+    const btnQ = document.querySelector('#q');
+    btnQ.addEventListener('click', onClickQ);
+
+    const btnW = document.querySelector('#w');
+    btnW.addEventListener('click', onClickW);
+
+    const btnE = document.querySelector('#e');
+    btnE.addEventListener('click', onClickE);
+
+    const btnR = document.querySelector('#r');
+    btnR.addEventListener('click', onClickR);
+
+    const btnA = document.querySelector('#a');
+    btnA.addEventListener('click', onClickA);
+
+    const btnS = document.querySelector('#s');
+    btnS.addEventListener('click', onClickS);
+
+    const btnD = document.querySelector('#d');
+    btnD.addEventListener('click', onClickD);
+
+    const btnF = document.querySelector('#f');
+    btnF.addEventListener('click', onClickF);
+
+    const btnX = document.querySelector('#x');
+    btnX.addEventListener('click', onClickX);
+  
+}
+
+function onClickQ (ev: MouseEvent) {
+    const time = ev.timeStamp;
+    const key = 'q';
+    playSound(key);
+    record(key,time);
+}
+function onClickW (ev: MouseEvent) {
+    const time = ev.timeStamp;
+    const key = 'w';
+    playSound(key);
+    record(key,time);
+}
+function onClickE (ev: MouseEvent) {
+    const time = ev.timeStamp;
+    const key = 'e';
+    playSound(key);
+    record(key,time);
+}
+function onClickR (ev: MouseEvent) {
+    const time = ev.timeStamp;
+    const key = 'r';
+    playSound(key);
+    record(key,time);
+}
+function onClickA (ev: MouseEvent) {
+    const time = ev.timeStamp;
+    const key = 'a';
+    playSound(key);
+    record(key,time);
+}
+function onClickS (ev: MouseEvent) {
+    const time = ev.timeStamp;
+    const key = 's';
+    playSound(key);
+    record(key,time);
+}
+function onClickD (ev: MouseEvent) {
+    const time = ev.timeStamp;
+    const key = 'd';
+    playSound(key);
+    record(key,time);
+}
+function onClickF (ev: MouseEvent) {
+    const time = ev.timeStamp;
+    const key = 'f';
+    playSound(key);
+    record(key,time);
+}
+function onClickX (ev: MouseEvent) {
+    const time = ev.timeStamp;
+    const key = 'x';
+    playSound(key);
+    record(key,time);
+}
+
+function record(key, time) {
+    if( ifRecord1 ) {
+        const newTime = time - timeRecord1;
+        channel1.push({key,newTime});
+        console.log(channel1);
+}
+    if (ifRecord2) {
+        const newTime = time - timeRecord2;
+        channel2.push({key,newTime});
+        console.log(channel2);
+    }
+    if (ifRecord3) {
+        const newTime = time - timeRecord3;
+        channel3.push({key,newTime});
+        console.log(channel3);
+    }
+    if (ifRecord4) {
+        const newTime = time - timeRecord4;
+        channel4.push({key,newTime});
+        console.log(channel4);
+    }
+
 }
 
 function recording1(ev: MouseEvent ) {
@@ -141,31 +247,13 @@ function keyPressOn(ev: KeyboardEvent): void {
 
     if (key=='q' || key=='w' ||key=='e' ||key=='r' ||key=='a' ||key=='s' ||
     key=='d' ||key=='f' ||key=='x' ) {
-    playSound(key);
-    }
-    if( ifRecord1 ) {
-    const newTime = time - timeRecord1;
-    channel1.push({key,newTime});
-    console.log(channel1);
-    }
-    if (ifRecord2) {
-        const newTime = time - timeRecord2;
-        channel2.push({key,newTime});
-        console.log(channel2);
-    }
-    if (ifRecord3) {
-        const newTime = time - timeRecord3;
-        channel3.push({key,newTime});
-        console.log(channel3);
-    }
-    if (ifRecord4) {
-        const newTime = time - timeRecord4;
-        channel4.push({key,newTime});
-        console.log(channel4);
-    }
 
-    
+    playSound(key);
+    record(key, time);
 }
+}
+    
+
 
 function playSound(key):void {
 
