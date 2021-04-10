@@ -23,6 +23,10 @@ const channel4: any[] = [];
 let ifRecord4: boolean = false;
 let timeRecord4: number;
 let counter4: number = 0;
+let changeCounter1: number = 0;
+let changeCounter2: number = 0;
+let changeCounter3: number = 0;
+let changeCounter4: number = 0;
 startApp();
 
 
@@ -38,21 +42,25 @@ function loadButtons(): void{
     btnChannel1.addEventListener('click', playChanel1);
     const btnRecord1 = document.querySelector('#record1');
     btnRecord1.addEventListener('click', recording1);
+    btnRecord1.addEventListener('click', (ev) => btnRecord1.innerHTML=change1(btnRecord1.innerHTML));
 
     const btnChannel2 = document.querySelector('#channel2');
     btnChannel2.addEventListener('click', playChanel2);
     const btnRecord2 = document.querySelector('#record2');
     btnRecord2.addEventListener('click', recording2);
+    btnRecord2.addEventListener('click', (ev) => btnRecord2.innerHTML=change2(btnRecord2.innerHTML));
 
     const btnChannel3 = document.querySelector('#channel3');
     btnChannel3.addEventListener('click', playChanel3);
     const btnRecord3 = document.querySelector('#record3');
     btnRecord3.addEventListener('click', recording3);
+    btnRecord3.addEventListener('click', (ev) => btnRecord3.innerHTML=change3(btnRecord3.innerHTML));
 
     const btnChannel4 = document.querySelector('#channel4');
     btnChannel4.addEventListener('click', playChanel4);
     const btnRecord4 = document.querySelector('#record4');
     btnRecord4.addEventListener('click', recording4);
+    btnRecord4.addEventListener('click', (ev) => btnRecord4.innerHTML=change4(btnRecord4.innerHTML));
 
     const btnQ = document.querySelector('#q');
     btnQ.addEventListener('click', onClickQ);
@@ -82,6 +90,55 @@ function loadButtons(): void{
     btnX.addEventListener('click', onClickX);
   
 }
+function change1(key: string) {
+    changeCounter1++;
+    if (changeCounter1 %2 == 0)
+    {
+        key = "Start Record";
+    }
+    else
+    {
+        key = "Stop Record";
+    }
+    return key;
+}
+function change2(key: string) {
+    changeCounter2++;
+    if (changeCounter2 %2 == 0)
+    {
+        key = "Start Record";
+    }
+    else
+    {
+        key = "Stop Record";
+    }
+    return key;
+}
+function change3(key: string) {
+    changeCounter3++;
+    if (changeCounter3 %2 == 0)
+    {
+        key = "Start Record";
+    }
+    else
+    {
+        key = "Stop Record";
+    }
+    return key;
+}
+function change4(key: string) {
+    changeCounter4++;
+    if (changeCounter4 %2 == 0)
+    {
+        key = "Start Record";
+    }
+    else
+    {
+        key = "Stop Record";
+    }
+    return key;
+}
+
 
 function onClickQ (ev: MouseEvent) {
     const time = ev.timeStamp;

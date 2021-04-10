@@ -23,6 +23,10 @@ var channel4 = [];
 var ifRecord4 = false;
 var timeRecord4;
 var counter4 = 0;
+var changeCounter1 = 0;
+var changeCounter2 = 0;
+var changeCounter3 = 0;
+var changeCounter4 = 0;
 startApp();
 function startApp() {
     document.body.addEventListener('keypress', keyPressOn);
@@ -34,18 +38,22 @@ function loadButtons() {
     btnChannel1.addEventListener('click', playChanel1);
     var btnRecord1 = document.querySelector('#record1');
     btnRecord1.addEventListener('click', recording1);
+    btnRecord1.addEventListener('click', function (ev) { return btnRecord1.innerHTML = change1(btnRecord1.innerHTML); });
     var btnChannel2 = document.querySelector('#channel2');
     btnChannel2.addEventListener('click', playChanel2);
     var btnRecord2 = document.querySelector('#record2');
     btnRecord2.addEventListener('click', recording2);
+    btnRecord2.addEventListener('click', function (ev) { return btnRecord2.innerHTML = change2(btnRecord2.innerHTML); });
     var btnChannel3 = document.querySelector('#channel3');
     btnChannel3.addEventListener('click', playChanel3);
     var btnRecord3 = document.querySelector('#record3');
     btnRecord3.addEventListener('click', recording3);
+    btnRecord3.addEventListener('click', function (ev) { return btnRecord3.innerHTML = change3(btnRecord3.innerHTML); });
     var btnChannel4 = document.querySelector('#channel4');
     btnChannel4.addEventListener('click', playChanel4);
     var btnRecord4 = document.querySelector('#record4');
     btnRecord4.addEventListener('click', recording4);
+    btnRecord4.addEventListener('click', function (ev) { return btnRecord4.innerHTML = change4(btnRecord4.innerHTML); });
     var btnQ = document.querySelector('#q');
     btnQ.addEventListener('click', onClickQ);
     var btnW = document.querySelector('#w');
@@ -64,6 +72,46 @@ function loadButtons() {
     btnF.addEventListener('click', onClickF);
     var btnX = document.querySelector('#x');
     btnX.addEventListener('click', onClickX);
+}
+function change1(key) {
+    changeCounter1++;
+    if (changeCounter1 % 2 == 0) {
+        key = "Start Record";
+    }
+    else {
+        key = "Stop Record";
+    }
+    return key;
+}
+function change2(key) {
+    changeCounter2++;
+    if (changeCounter2 % 2 == 0) {
+        key = "Start Record";
+    }
+    else {
+        key = "Stop Record";
+    }
+    return key;
+}
+function change3(key) {
+    changeCounter3++;
+    if (changeCounter3 % 2 == 0) {
+        key = "Start Record";
+    }
+    else {
+        key = "Stop Record";
+    }
+    return key;
+}
+function change4(key) {
+    changeCounter4++;
+    if (changeCounter4 % 2 == 0) {
+        key = "Start Record";
+    }
+    else {
+        key = "Stop Record";
+    }
+    return key;
 }
 function onClickQ(ev) {
     var time = ev.timeStamp;
