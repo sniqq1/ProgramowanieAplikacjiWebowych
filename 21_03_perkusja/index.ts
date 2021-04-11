@@ -90,7 +90,7 @@ function loadButtons(): void{
     btnX.addEventListener('click', onClickX);
   
 }
-function change1(key: string) {
+function change1(key: string)  {
     changeCounter1++;
     if (changeCounter1 %2 == 0)
     {
@@ -140,7 +140,7 @@ function change4(key: string) {
 }
 
 
-function onClickQ (ev: MouseEvent) {
+function onClickQ (ev: MouseEvent) :void {
     const time = ev.timeStamp;
     const key = 'q';
     playSound(key);
