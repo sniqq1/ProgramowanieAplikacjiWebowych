@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pogoda</title>
-  </head>
-  <body>
-    <main>
-      <div>
-        
-          <input name="cityInput" id="cityInput" class="input" type="text">
-          <button id="cityButton" class="button" type="submit">Dodaj</button>
-      
-      </div>
-      <div>
-        <ul id="cityList">
-
-        </ul>
-      </div>
-    </main>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pogodynka</title>
+</head>
+<body>
+    <form class="form">
+        <label for="add">Podaj miasto </label>
+        <input type="text" name="add" class="add">
+        <button type="submit">Dodaj</button>
+    </form>
+    <div class="weatherLists"></div>
+    
     <script src="index.js"></script>
-  </body>
+</body>
 </html>
